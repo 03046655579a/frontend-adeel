@@ -104,7 +104,7 @@ class AddQuizCategory extends React.Component {
   addProduct() {
       axios
         .post(
-          "http://BASE_URL:3000/quiz/api/addQuizCategory",
+          "http://34.227.47.234:5000/quiz/api/addQuizCategory",
           {
             categoryTitle: this.state.catTitle,
             description: this.state.Description,

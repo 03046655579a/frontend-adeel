@@ -130,7 +130,7 @@ class QuizSeriesList extends React.Component {
     }  else {
       const data = new FormData();
     if ( this.state.selectedFile ) {
-      var url = 'http://BASE_URL:3000/quiz/api/uploadImage';
+      var url = 'http://34.227.47.234:5000/quiz/api/uploadImage';
       data.append('File', this.state.file );
       axios.post( url, data, {
       headers: {
@@ -164,7 +164,7 @@ class QuizSeriesList extends React.Component {
   addProduct() {
       axios
         .post(
-          "http://BASE_URL:3000/quiz/api/updateSpecificSeries",
+          "http://34.227.47.234:5000/quiz/api/updateSpecificSeries",
           {
             id: this.state.recordId,  
             category: this.state.category,
@@ -212,7 +212,7 @@ class QuizSeriesList extends React.Component {
 
   getOrdersFromDatabase() {
     axios
-      .get("http://BASE_URL:3000/quiz/api/getAllSeries")
+      .get("http://34.227.47.234:5000/quiz/api/getAllSeries")
       .then((res) => {
         console.log("response : ",res);
         if (res.data.status === 200) {
@@ -289,7 +289,7 @@ class QuizSeriesList extends React.Component {
   delete = (index) => {
     axios
       .post(
-        "http://BASE_URL:3000/quiz/api/deleteSpecificSeries",
+        "http://34.227.47.234:5000/quiz/api/deleteSpecificSeries",
         {
           id: this.state.ordersData.data.feed[index].id,
         },

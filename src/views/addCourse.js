@@ -56,7 +56,7 @@ class AddCourse extends React.Component {
 
   getCategoriesFromDatabase() {
     axios
-      .get("http://BASE_URL:3000/quiz/api/getCourseCategories")
+      .get("http://34.227.47.234:5000/quiz/api/getCourseCategories")
       .then((res) => {
         console.log("response : ",res);
         if (res.data.status === 200) {
@@ -183,7 +183,7 @@ class AddCourse extends React.Component {
     } else {
       const data = new FormData();
     if ( this.state.selectedFile ) {
-      var url = 'http://BASE_URL:3000/quiz/api/uploadImage';
+      var url = 'http://34.227.47.234:5000/quiz/api/uploadImage';
       data.append('File', this.state.file );
       axios.post( url, data, {
       headers: {
@@ -221,7 +221,7 @@ class AddCourse extends React.Component {
   addProduct() {
       axios
         .post(
-          "http://BASE_URL:3000/quiz/api/addCourse",
+          "http://34.227.47.234:5000/quiz/api/addCourse",
           {
             description: this.state.description,
             url: this.state.uploadedImageUrl,

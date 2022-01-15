@@ -87,7 +87,7 @@ class AddCourseCategory extends React.Component {
   addProduct() {
       axios
         .post(
-          "http://BASE_URL:3000/quiz/api/addCourseCategory",
+          "http://34.227.47.234:5000/quiz/api/addCourseCategory",
           {
             title: this.state.catTitle,
           },

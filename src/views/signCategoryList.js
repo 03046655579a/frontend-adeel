@@ -105,7 +105,7 @@ class signCategoryList extends React.Component {
     }  else {
       const data = new FormData();
     if ( this.state.selectedFile != null) {
-      var url = 'http://BASE_URL:3000/quiz/api/uploadImage';
+      var url = 'http://34.227.47.234:5000/quiz/api/uploadImage';
       data.append('File', this.state.file );
       axios.post( url, data, {
       headers: {
@@ -138,7 +138,7 @@ class signCategoryList extends React.Component {
   addProduct() {
       axios
         .post(
-          "http://BASE_URL:3000/quiz/api/updateSpecificSignCategory",
+          "http://34.227.47.234:5000/quiz/api/updateSpecificSignCategory",
           {
             id: this.state.recordId,  
             title: this.state.description,
@@ -190,7 +190,7 @@ class signCategoryList extends React.Component {
 
   getOrdersFromDatabase() {
     axios
-      .get("http://BASE_URL:3000/quiz/api/getSignCategories")
+      .get("http://34.227.47.234:5000/quiz/api/getSignCategories")
       .then((res) => {
         console.log("response : ",res);
         if (res.data.status === 200) {
@@ -274,7 +274,7 @@ class signCategoryList extends React.Component {
   delete = (index) => {
     axios
       .post(
-        "http://BASE_URL:3000/quiz/api/deleteSpecificSignCategory",
+        "http://34.227.47.234:5000/quiz/api/deleteSpecificSignCategory",
         {
           id: this.state.ordersData.data.feed[index].id,
         },

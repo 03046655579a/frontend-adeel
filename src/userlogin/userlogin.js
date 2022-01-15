@@ -61,7 +61,7 @@ class UserLogin extends Component {
     } else {
       axios
         .post(
-          "http://BASE_URL:3000/quiz/api/findAdmin",
+          "http://34.227.47.234:5000/quiz/api/findadmin",
           {
             email: this.state.Email,
             password: this.state.Password,

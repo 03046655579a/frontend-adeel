@@ -111,7 +111,7 @@ class AdminSignup extends Component {
     } else {
       axios
         .post(
-          "http://BASE_URL:3000/medication/api/adduser",
+          "http://34.227.47.234:5000/medication/api/adduser",
           {
             storeName: this.state.StoreName,
             proprieterName: this.state.proprieterName,

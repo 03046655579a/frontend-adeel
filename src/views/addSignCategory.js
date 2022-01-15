@@ -97,7 +97,7 @@ class AddSignCategory extends React.Component {
     }  else {
       const data = new FormData();
     if ( this.state.selectedFile ) {
-      var url = 'http://BASE_URL:3000/quiz/api/uploadImage';
+      var url = 'http://34.227.47.234:5000/quiz/api/uploadImage';
       data.append('File', this.state.file );
       axios.post( url, data, {
       headers: {
@@ -135,7 +135,7 @@ class AddSignCategory extends React.Component {
   addProduct() {
       axios
         .post(
-          "http://BASE_URL:3000/quiz/api/addSignCategory",
+          "http://34.227.47.234:5000/quiz/api/addSignCategory",
           {
             title: this.state.description,
             url: this.state.uploadedImageUrl

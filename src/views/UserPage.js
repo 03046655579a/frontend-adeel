@@ -106,7 +106,7 @@ class User extends React.Component {
     } else {
       axios
         .post(
-          "http://BASE_URL:3000/medication/api/AddProduct",
+          "http://34.227.47.234:5000/medication/api/AddProduct",
           {
             productName: this.state.ProductName,
             potency: this.state.Potency,

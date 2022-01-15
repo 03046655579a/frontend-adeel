@@ -85,7 +85,7 @@ class QuizCategoryList extends React.Component {
 
   getOrdersFromDatabase() {
     axios
-      .get("http://BASE_URL:3000/quiz/api/getCategories")
+      .get("http://34.227.47.234:5000/quiz/api/getCategories")
       .then((res) => {
         console.log("response : ",res);
         if (res.data.status === 200) {
@@ -170,7 +170,7 @@ class QuizCategoryList extends React.Component {
   changestatus = (index) => {
     axios
       .post(
-        "http://BASE_URL:3000/quiz/api/deleteCategory",
+        "http://34.227.47.234:5000/quiz/api/deleteCategory",
         {
           id: this.state.ordersData.data.feed[index].id,
         },
@@ -261,7 +261,7 @@ class QuizCategoryList extends React.Component {
   addProduct() {
       axios
         .post(
-          "http://BASE_URL:3000/quiz/api/updateCategory",
+          "http://34.227.47.234:5000/quiz/api/updateCategory",
           {
             id: this.state.recordId,  
             categoryTitle: this.state.catTitle,

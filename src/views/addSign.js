@@ -56,7 +56,7 @@ class AddSign extends React.Component {
 
   getCategoriesFromDatabase() {
     axios
-      .get("http://BASE_URL:3000/quiz/api/getSignCategories")
+      .get("http://34.227.47.234:5000/quiz/api/getSignCategories")
       .then((res) => {
         console.log("response : ",res);
         if (res.data.status === 200) {
@@ -199,7 +199,7 @@ class AddSign extends React.Component {
     } else {
       const data = new FormData();
     if ( this.state.selectedFile ) {
-      var url = 'http://BASE_URL:3000/quiz/api/uploadImage';
+      var url = 'http://34.227.47.234:5000/quiz/api/uploadImage';
       data.append('File', this.state.file );
       axios.post( url, data, {
       headers: {
@@ -237,7 +237,7 @@ class AddSign extends React.Component {
   addProduct() {
       axios
         .post(
-          "http://BASE_URL:3000/quiz/api/addSign",
+          "http://34.227.47.234:5000/quiz/api/addSign",
           {
             SignName: this.state.SignName,
             SignType: this.state.SignType,

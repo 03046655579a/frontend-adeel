@@ -31,7 +31,7 @@ class RegularTables extends React.Component {
 
   getOrdersFromDatabase() {
     axios
-      .get("http://BASE_URL:3000/medication/api/findallorders")
+      .get("http://34.227.47.234:5000/medication/api/findallorders")
       .then((res) => {
         console.log("statusTextof res", res);
         if (res.data.message.length > 0) {
@@ -99,7 +99,7 @@ class RegularTables extends React.Component {
     }
     axios
       .post(
-        "http://BASE_URL:3000/medication/api/changeorderstatus",
+        "http://34.227.47.234:5000/medication/api/changeorderstatus",
         {
           id: this.state.ordersData.data.message[index]._id,
           username: this.state.ordersData.data.message[index].username,
