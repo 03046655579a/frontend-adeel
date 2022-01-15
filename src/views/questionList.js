@@ -41,42 +41,40 @@ class QuestionsList extends React.Component {
       seriesError: "",
       isLoading: false,
       seriesSelectionList: null,
-      
+
       isResponseReceived: false,
       categoriesstatus: null,
       categoryError: "",
 
-      isQuestion2:false,
-isUpdate:false,
-category:"",
-selectedSeriesNumber:0,
-uploadedImageUrl:null,
-language:"",
-question1:"",
-question2:"",
-q1_option1:"",
-q1_option2:"",
-q1_option3:"",
-q1_option4:"",
-q1_option1Key:"",
-q1_option2Key:"",
-q1_option3Key:"",
-q1_option4Key:"",
-q1_questionType:"",
-q1_description:"",
-q2_option1:"",
-q2_option2:"",
-q2_option3:"",
-q2_option4:"",
-q2_option1Key:"",
-q2_option2Key:"",
-q2_option3Key:"",
-q2_option4Key:"",
-q2_questionType:"",
-q2_description:"",
-recordId:"",
-
-
+      isQuestion2: false,
+      isUpdate: false,
+      category: "",
+      selectedSeriesNumber: 0,
+      uploadedImageUrl: null,
+      language: "",
+      question1: "",
+      question2: "",
+      q1_option1: "",
+      q1_option2: "",
+      q1_option3: "",
+      q1_option4: "",
+      q1_option1Key: "",
+      q1_option2Key: "",
+      q1_option3Key: "",
+      q1_option4Key: "",
+      q1_questionType: "",
+      q1_description: "",
+      q2_option1: "",
+      q2_option2: "",
+      q2_option3: "",
+      q2_option4: "",
+      q2_option1Key: "",
+      q2_option2Key: "",
+      q2_option3Key: "",
+      q2_option4Key: "",
+      q2_questionType: "",
+      q2_description: "",
+      recordId: ""
     };
 
     this.fileField = React.createRef();
@@ -665,7 +663,7 @@ recordId:"",
   // end
 
   getOrdersFromDatabase() {
-    debugger
+    debugger;
     axios
       .get("http://34.227.47.234:5000/quiz/api/getAllQuestions")
       .then((res) => {
@@ -725,48 +723,89 @@ recordId:"",
   update = (index) => {
     this.errorText = "";
     this.successText = "";
-    var isQ2 = this.state.ordersData.data.data[index].questions[1].title
-    debugger
+    var isQ2 = this.state.ordersData.data.data[index].questions[1].title;
+    debugger;
     this.setState({
-      isQuestion2: isQ2 ? true :false,
+      isQuestion2: isQ2 ? true : false,
       isUpdate: true,
 
       category: this.state.ordersData.data.data[index].category,
-      selectedSeriesNumber:
-        this.state.ordersData.data.data[index].seriesNumber,
-        
-        uploadedImageUrl: this.state.ordersData.data.data[index].url,
-        language: this.state.ordersData.data.data[index].language,
-        
-        question1: this.state.ordersData.data.data[index].questions[0].title,
-        question2: this.state.ordersData.data.data[index].questions[1].title,
-      
-        q1_questionType: this.state.ordersData.data.data[index].questions[0].questionType,
-        q1_description: this.state.ordersData.data.data[index].questions[0].description,
-        
-        q2_questionType: this.state.ordersData.data.data[index].questions[1].questionType,
-        q2_description: this.state.ordersData.data.data[index].questions[1].description,
+      selectedSeriesNumber: this.state.ordersData.data.data[index].seriesNumber,
 
-        q1_option1: this.state.ordersData.data.data[index].questions[0]?.options[0]?.label,
-        q1_option2: this.state.ordersData.data.data[index].questions[0]?.options[1]?.label,
-        q1_option3: this.state.ordersData.data.data[index].questions[0]?.options[2]?.label,
-        q1_option4: this.state.ordersData.data.data[index].questions[0]?.options[3]?.label,
-        q1_option1Key: this.state.ordersData.data.data[index].questions[0].options[0]?.value == 1 ? true: false,
-        q1_option2Key: this.state.ordersData.data.data[index].questions[0].options[1]?.value == 1 ? true: false,
-        q1_option3Key: this.state.ordersData.data.data[index].questions[0].options[2]?.value == 1 ? true: false,
-        q1_option4Key: this.state.ordersData.data.data[index].questions[0].options[3]?.value == 1 ? true: false,
-        q2_option1: this.state.ordersData.data.data[index].questions[1].options[0]?.label,
-        q2_option2: this.state.ordersData.data.data[index].questions[1].options[1]?.label,
-        q2_option3: this.state.ordersData.data.data[index].questions[1].options[2]?.label,
-        q2_option4: this.state.ordersData.data.data[index].questions[1].options[3]?.label,
-        q2_option1Key: this.state.ordersData.data.data[index].questions[1].options[0]?.value == 1 ? true: false,
-        q2_option2Key: this.state.ordersData.data.data[index].questions[1].options[1]?.value == 1 ? true: false,
-        q2_option3Key: this.state.ordersData.data.data[index].questions[1].options[2]?.value == 1 ? true: false,
-        q2_option4Key: this.state.ordersData.data.data[index].questions[1].options[3]?.value == 1 ? true: false,
-        recordId: this.state.ordersData.data.data[index].id
+      uploadedImageUrl: this.state.ordersData.data.data[index].url,
+      language: this.state.ordersData.data.data[index].language,
 
+      question1: this.state.ordersData.data.data[index].questions[0].title,
+      question2: this.state.ordersData.data.data[index].questions[1].title,
 
-      
+      q1_questionType:
+        this.state.ordersData.data.data[index].questions[0].questionType,
+      q1_description:
+        this.state.ordersData.data.data[index].questions[0].description,
+
+      q2_questionType:
+        this.state.ordersData.data.data[index].questions[1].questionType,
+      q2_description:
+        this.state.ordersData.data.data[index].questions[1].description,
+
+      q1_option1:
+        this.state.ordersData.data.data[index].questions[0]?.options[0]?.label,
+      q1_option2:
+        this.state.ordersData.data.data[index].questions[0]?.options[1]?.label,
+      q1_option3:
+        this.state.ordersData.data.data[index].questions[0]?.options[2]?.label,
+      q1_option4:
+        this.state.ordersData.data.data[index].questions[0]?.options[3]?.label,
+      q1_option1Key:
+        this.state.ordersData.data.data[index].questions[0].options[0]?.value ==
+        1
+          ? "true" 
+          : "false",
+      q1_option2Key:
+        this.state.ordersData.data.data[index].questions[0].options[1]?.value ==
+        1
+          ? "true" 
+          : "false",
+      q1_option3Key:
+        this.state.ordersData.data.data[index].questions[0].options[2]?.value ==
+        1
+          ? "true" 
+          : "false",
+      q1_option4Key:
+        this.state.ordersData.data.data[index].questions[0].options[3]?.value ==
+        1
+          ? "true" 
+          : "false",
+      q2_option1:
+        this.state.ordersData.data.data[index].questions[1].options[0]?.label,
+      q2_option2:
+        this.state.ordersData.data.data[index].questions[1].options[1]?.label,
+      q2_option3:
+        this.state.ordersData.data.data[index].questions[1].options[2]?.label,
+      q2_option4:
+        this.state.ordersData.data.data[index].questions[1].options[3]?.label,
+      q2_option1Key:
+        this.state.ordersData.data.data[index].questions[1].options[0]?.value ==
+        1
+          ? "true" 
+          : "false",
+      q2_option2Key:
+        this.state.ordersData.data.data[index].questions[1].options[1]?.value ==
+        1
+          ? "true" 
+          : "false",
+      q2_option3Key:
+        this.state.ordersData.data.data[index].questions[1].options[2]?.value ==
+        1
+          ? "true" 
+          : "false",
+      q2_option4Key:
+        this.state.ordersData.data.data[index].questions[1].options[3]?.value ==
+        1
+          ? "true" 
+          : "false",
+      recordId: this.state.ordersData.data.data[index].id
+
       // options3:   this.state.ordersData.data.data[index].options[2].label != null ? "" : this.state.ordersData.data.data[index].options[2].label,
       // options4:  this.state.ordersData.data.data[index].options[3].label != null ? "" : this.state.ordersData.data.data[index].options[3].label,
     });
@@ -857,11 +896,17 @@ recordId:"",
     );
   }
 
+  handleStateChange = value => {
+    this.setState({ isUpdate:value })
+    this.getOrdersFromDatabase();
+  }
+
   render() {
     return this.state.isUpdate ? (
       <div>
-        <AddQuestion state={this.state}/>
+        <AddQuestion state={this.state} setState={this.handleStateChange}/>
       </div>
+    ) : (
       // <>
       //   <PanelHeader size="sm" />
       //   <div className="content">
@@ -1209,7 +1254,6 @@ recordId:"",
       //     </Row>
       //   </div>
       // </>
-    ) : (
       <>
         <PanelHeader size="sm" />
         <div className="content">

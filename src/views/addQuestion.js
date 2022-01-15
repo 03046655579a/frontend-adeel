@@ -24,59 +24,92 @@ class AddQuestion extends React.Component {
     console.log("props", props);
     const updateValue = props.state;
     super(props);
+
     this.state = {
-      isQuestion2: updateValue?.isQuestion2,
+      updateQuestionSetState: props?.setState,
+      isQuestion2: updateValue?.isQuestion2 ? updateValue.isQuestion2 : false,
       SignName: "",
       SignType: "",
       Description: "",
-      category: updateValue?.category,
-      uploadedImageUrl: updateValue?.uploadedImageUrl,
+      category: updateValue?.category ? updateValue.category : "",
+      uploadedImageUrl: updateValue?.uploadedImageUrl
+        ? updateValue.uploadedImageUrl
+        : null,
       error: false,
       register: false,
-      selectedFile: updateValue?.uploadedImageUrl,
+      selectedFile: updateValue?.uploadedImageUrl
+        ? updateValue.uploadedImageUrl
+        : null,
       file: null,
       order: false,
       ordersData: null,
       seriesNumber: -1,
       seriesError: "",
       isLoading: false,
-      selectedSeriesNumber: updateValue?.selectedSeriesNumber,
+      selectedSeriesNumber: updateValue?.selectedSeriesNumber
+        ? updateValue.selectedSeriesNumber
+        : 0,
       seriesSelectionList: null,
       questions: [],
 
-      q1_title: updateValue?.q1_title,
-      question1: updateValue?.question1,
-      q1_options1: updateValue?.q1_option1,
-      q1_options2: updateValue?.q1_option2,
+      q1_title: updateValue?.q1_title ? updateValue.q1_title : "",
+      question1: updateValue?.question1 ? updateValue.question1 : "",
+      q1_options1: updateValue?.q1_option1 ? updateValue.q1_option1 : "",
+      q1_options2: updateValue?.q1_option2 ? updateValue.q1_option2 : "",
       q1_options3: updateValue?.q1_option3 ? updateValue.q1_option3 : "",
       q1_options4: updateValue?.q1_option4 ? updateValue.q1_option4 : "",
-      q1_option1Key: updateValue?.q1_option1Key,
-      q1_option2Key: updateValue?.q1_option2Key,
-      q1_option3Key: updateValue?.q1_option3Key,
-      q1_option4Key: updateValue?.q1_option4Key,
-      q1_description: updateValue?.q1_description,
+      q1_option1Key: updateValue?.q1_option1Key
+        ? updateValue.q1_option1Key
+        : "",
+      q1_option2Key: updateValue?.q1_option2Key
+        ? updateValue.q1_option2Key
+        : "",
+      q1_option3Key: updateValue?.q1_option3Key
+        ? updateValue.q1_option3Key
+        : "",
+      q1_option4Key: updateValue?.q1_option4Key
+        ? updateValue.q1_option4Key
+        : "",
+      q1_description: updateValue?.q1_description
+        ? updateValue.q1_description
+        : "",
 
-      q2_title: updateValue?.q2_title,
-      question2: updateValue?.question2,
-      q2_options1: updateValue?.q2_option1,
-      q2_options2: updateValue?.q2_option2,
-      q2_options3: updateValue?.q2_option3 ? updateValue.q2_option3 :"",
-      q2_options4: updateValue?.q2_option4 ? updateValue.q2_option4 :"",
-      q2_option1Key: updateValue?.q2_option1Key,
-      q2_option2Key: updateValue?.q2_option2Key,
-      q2_option3Key: updateValue?.q2_option3Key,
-      q2_option4Key: updateValue?.q2_option4Key,
-      q2_description: updateValue?.q2_description,
+      q2_title: updateValue?.q2_title ? updateValue.q2_title : "",
+      question2: updateValue?.question2 ? updateValue.question2 : "",
+      q2_options1: updateValue?.q2_option1 ? updateValue.q2_option1 : "",
+      q2_options2: updateValue?.q2_option2 ? updateValue.q2_option2 : "",
+      q2_options3: updateValue?.q2_option3 ? updateValue.q2_option3 : "",
+      q2_options4: updateValue?.q2_option4 ? updateValue.q2_option4 : "",
+      q2_option1Key: updateValue?.q2_option1Key
+        ? updateValue.q2_option1Key
+        : "",
+      q2_option2Key: updateValue?.q2_option2Key
+        ? updateValue.q2_option2Key
+        : "",
+      q2_option3Key: updateValue?.q2_option3Key
+        ? updateValue.q2_option3Key
+        : "",
+      q2_option4Key: updateValue?.q2_option4Key
+        ? updateValue.q2_option4Key
+        : "",
+      q2_description: updateValue?.q2_description
+        ? updateValue.q2_description
+        : "",
 
-      q1_questionType: updateValue?.q1_questionType,
-      q2_questionType: updateValue?.q2_questionType,
+      q1_questionType: updateValue?.q1_questionType
+        ? updateValue.q1_questionType
+        : "",
+      q2_questionType: updateValue?.q2_questionType
+        ? updateValue.q2_questionType
+        : "",
       isResponseReceived: false,
       categoriesstatus: null,
       categoryError: "",
-      language: updateValue?.language,
-      isUpdate: updateValue?.isUpdate,
-      recordId: updateValue?.recordId
+      language: updateValue?.language ? updateValue.language : false,
+      isUpdate: updateValue?.isUpdate ? updateValue.isUpdate : false,
+      recordId: updateValue?.recordId ? updateValue.recordId : ""
     };
+    debugger;
     this.fileField = React.createRef();
     this.onDropdownSelected = this.onDropdownSelected.bind(this);
     this.onSeriesDropdownSelected = this.onSeriesDropdownSelected.bind(this);
@@ -436,6 +469,7 @@ class AddQuestion extends React.Component {
         isResponseReceived: false
       });
     } else if (this.state.isQuestion2 === true) {
+      debugger;
       if (
         this.state.question2.length <= 0 &&
         this.state.q2_options1.length <= 0 &&
@@ -606,6 +640,7 @@ class AddQuestion extends React.Component {
         isResponseReceived: false
       });
     }
+
     if (
       this.state.selectedSeriesNumber == 0 ||
       this.state.selectedSeriesNumber === "select series"
@@ -743,35 +778,34 @@ class AddQuestion extends React.Component {
         error: true,
         isResponseReceived: false
       });
-    } else {
+    } else if (this.errorText == "") {
       const data = new FormData();
       if (this.state.selectedFile) {
         let result = this.state.selectedFile.slice(0, 4);
         if (result === "http") {
           this.addProduct();
         } else {
-          
           var url = "http://34.227.47.234:5000/quiz/api/uploadImage";
           data.append("File", this.state.file);
           axios
-          .post(url, data, {
-            headers: {
-              "Access-Control-Allow-Origin": "http://localhost:3000",
-              "Content-Type": `multipart/form-data; boundary=${data._boundary}`
-            }
-          })
-          .then((response) => {
-            console.log("response : ", response);
-            if (response.data.code == 200) {
-              this.setState({
-                uploadedImageUrl: response.data.url
-              });
-              this.addProduct();
-            }
-          })
-          .catch((error) => {
-            console.log("error", error);
-          });
+            .post(url, data, {
+              headers: {
+                "Access-Control-Allow-Origin": "http://localhost:3000",
+                "Content-Type": `multipart/form-data; boundary=${data._boundary}`
+              }
+            })
+            .then((response) => {
+              console.log("response : ", response);
+              if (response.data.code == 200) {
+                this.setState({
+                  uploadedImageUrl: response.data.url
+                });
+                this.addProduct();
+              }
+            })
+            .catch((error) => {
+              console.log("error", error);
+            });
         }
       } else {
         this.errorText = "Image is required for series*";
@@ -835,23 +869,25 @@ class AddQuestion extends React.Component {
 
     axios
       .post(
-        this.state.isUpdate   ? "http://34.227.47.234:5000/quiz/api/updateSpecificQuestion" : "http://34.227.47.234:5000/quiz/api/addQuestion",
-        this.state.isUpdate  ?
-        {
-          id:this.state.recordId,
-          category: this.state.category,
-          seriesNumber: this.state.selectedSeriesNumber,
-          url: this.state.uploadedImageUrl,
-          language: this.state.language,
-          questions: [q1, this.state.isQuestion2 && q2]
-        }:{
-          category: this.state.category,
-          seriesNumber: this.state.selectedSeriesNumber,
-          url: this.state.uploadedImageUrl,
-          language: this.state.language,
-          questions: [q1, this.state.isQuestion2 && q2]
-        }
-        ,
+        this.state.isUpdate
+          ? "http://34.227.47.234:5000/quiz/api/updateSpecificQuestion"
+          : "http://34.227.47.234:5000/quiz/api/addQuestion",
+        this.state.isUpdate
+          ? {
+              id: this.state.recordId,
+              category: this.state.category,
+              seriesNumber: this.state.selectedSeriesNumber,
+              url: this.state.uploadedImageUrl,
+              language: this.state.language,
+              questions: [q1, this.state.isQuestion2 && q2]
+            }
+          : {
+              category: this.state.category,
+              seriesNumber: this.state.selectedSeriesNumber,
+              url: this.state.uploadedImageUrl,
+              language: this.state.language,
+              questions: [q1, this.state.isQuestion2 && q2]
+            },
         {
           headers: {
             "Access-Control-Allow-Origin": "http://localhost:3000",
@@ -866,16 +902,47 @@ class AddQuestion extends React.Component {
           this.successText = "Question added successfully *";
           this.setState({
             register: true,
-            question: "",
-            description: "",
-            options1: "",
-            options2: "",
-            options3: "",
-            options4: "",
-            Description: "",
+            isQuestion2: false,
+            question1: "",
+            q1_options1: "",
+            q1_options2: "",
+            q1_options3: "",
+            q1_options4: "",
+            q1_option1Key: "",
+            q1_option2Key: "",
+            q1_option3Key: "",
+            q1_option3Key: "",
+            q1_option4Key: "",
+            q1_option4Key: "",
+            q1_questionType: "",
+            q1_description: "",
+            question2: "",
+            q2_options1: "",
+            q2_options2: "",
+            q2_options3: "",
+            q2_options4: "",
+            q2_option1Key: "",
+            q2_option2Key: "",
+            q2_option3Key: "",
+            q2_option3Key: "",
+            q2_option4Key: "",
+            q2_option4Key: "",
+            q2_questionType: "",
+            q2_description: "",
+
+            category: "",
+            selectedFile: null,
+            seriesNumber: -1,
+            selectedSeriesNumber: 0,
+            seriesSelectionList: null,
+            categoriesstatus: null,
+            language: "",
+            isUpdate: false,
+
             selectedFile: null,
             isResponseReceived: false
           });
+          this.state.updateQuestionSetState(false);
         } else if (res.data.code === 400) {
           this.successText = "";
           this.errorText = "Something went wrong *";
@@ -914,7 +981,7 @@ class AddQuestion extends React.Component {
                           <Input
                             onClick={this.getChckeboxValue}
                             type="checkbox"
-                            value={this.state.language}
+                            checked={this.state.language}
                           />
                           French
                         </FormGroup>
@@ -1061,7 +1128,7 @@ class AddQuestion extends React.Component {
                             type="select"
                             style={{ height: 45 }}
                             name="q1_option1Key"
-                            // value={}
+                            value={this.state.q1_option1Key}
                             onChange={this.changeHandler}
                           >
                             {this.data.map((e, key) => {
@@ -1346,7 +1413,7 @@ class AddQuestion extends React.Component {
                       <Col className="pr-1" md="3"></Col>
                       <Col className="px-1" md="4"></Col>
                       <Col className="pl-1" md="4">
-                        {/* {this.state.isResponseReceived ? (
+                        {this.state.isResponseReceived ? (
                           <Col className="pr-1" md="4">
                             <FormGroup>
                               <Loader
@@ -1358,7 +1425,7 @@ class AddQuestion extends React.Component {
                               />
                             </FormGroup>
                           </Col>
-                        ) : ( */}
+                        ) : (
                           <FormGroup>
                             <label></label>
                             <div className="container">
@@ -1376,6 +1443,7 @@ class AddQuestion extends React.Component {
                                     </Button>
                                   </div>
                                 )}
+                               
 
                                 <div className="col-sm-4">
                                   <Button
@@ -1386,12 +1454,24 @@ class AddQuestion extends React.Component {
                                         ? "Update Question"
                                         : "Add Question"
                                     }`}
+
                                   </Button>
                                 </div>
+                                {this.state.isUpdate && (
+                                  <div className="col-sm-3">
+                                    <Button
+                                      onClick={() =>
+                                        this.state.updateQuestionSetState(false)
+                                      }
+                                    >
+                                      Cancel
+                                    </Button>
+                                  </div>
+                                )}
                               </div>
                             </div>
                           </FormGroup>
-                        {/* )} */}
+                        )}
                       </Col>
                     </Row>
                     <Row>
