@@ -97,7 +97,7 @@ class CourseCategoryList extends React.Component {
   addProduct() {
       axios
         .post(
-          "http://34.227.47.234:5000/quiz/api/updateSpecificCourseCategory",
+          "https://drive-now.herokuapp.com/quiz/api/updateSpecificCourseCategory",
           {
             id: this.state.recordId,  
             title: this.state.catTitle,
@@ -150,7 +150,7 @@ class CourseCategoryList extends React.Component {
 
   getOrdersFromDatabase() {
     axios
-      .get("http://34.227.47.234:5000/quiz/api/getCourseCategories")
+      .get("https://drive-now.herokuapp.com/quiz/api/getCourseCategories")
       .then((res) => {
         console.log("response : ",res);
         if (res.data.status === 200) {
@@ -233,7 +233,7 @@ class CourseCategoryList extends React.Component {
   delete = (index) => {
     axios
       .post(
-        "http://34.227.47.234:5000/quiz/api/deleteSpecificCourseCategory",
+        "https://drive-now.herokuapp.com/quiz/api/deleteSpecificCourseCategory",
         {
           id: this.state.ordersData.data.feed[index].id,
         },

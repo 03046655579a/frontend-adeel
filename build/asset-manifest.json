@@ -1,31 +1,31 @@
 {
   "files": {
-    "main.css": "/static/css/main.20c4603b.chunk.css",
-    "main.js": "/static/js/main.3fa19376.chunk.js",
-    "main.js.map": "/static/js/main.3fa19376.chunk.js.map",
+    "main.css": "/static/css/main.0050fbef.chunk.css",
+    "main.js": "/static/js/main.b3efdd17.chunk.js",
+    "main.js.map": "/static/js/main.b3efdd17.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.73b1f5a3.js",
     "runtime-main.js.map": "/static/js/runtime-main.73b1f5a3.js.map",
     "static/css/2.1b5404f8.chunk.css": "/static/css/2.1b5404f8.chunk.css",
-    "static/js/2.190a5046.chunk.js": "/static/js/2.190a5046.chunk.js",
-    "static/js/2.190a5046.chunk.js.map": "/static/js/2.190a5046.chunk.js.map",
+    "static/js/2.de6839d2.chunk.js": "/static/js/2.de6839d2.chunk.js",
+    "static/js/2.de6839d2.chunk.js.map": "/static/js/2.de6839d2.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.433a55d59429b7d878d78c0a68e3df79.js": "/precache-manifest.433a55d59429b7d878d78c0a68e3df79.js",
+    "precache-manifest.a5e9b3d0477c7b7029e9199cfbf7da06.js": "/precache-manifest.a5e9b3d0477c7b7029e9199cfbf7da06.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.1b5404f8.chunk.css.map": "/static/css/2.1b5404f8.chunk.css.map",
-    "static/css/main.20c4603b.chunk.css.map": "/static/css/main.20c4603b.chunk.css.map",
-    "static/js/2.190a5046.chunk.js.LICENSE.txt": "/static/js/2.190a5046.chunk.js.LICENSE.txt",
+    "static/css/main.0050fbef.chunk.css.map": "/static/css/main.0050fbef.chunk.css.map",
+    "static/js/2.de6839d2.chunk.js.LICENSE.txt": "/static/js/2.de6839d2.chunk.js.LICENSE.txt",
     "static/media/bg5.jpg": "/static/media/bg5.056eb058.jpg",
-    "static/media/logo-white.svg": "/static/media/logo-white.eec7c7f6.svg",
-    "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg",
+    "static/media/logo-white.svg": "/static/media/logo-white.a80cd7a7.svg",
     "static/media/logo.png": "/static/media/logo.a65db348.png",
     "static/media/logo.jpg": "/static/media/logo.c0c123bf.jpg",
+    "static/media/logo.svg": "/static/media/logo.ee7cd8ed.svg",
     "static/media/now-ui-dashboard.scss?v1.4.0": "/static/media/nucleo-outline.8ebec31f.woff2"
   },
   "entrypoints": [
     "static/js/runtime-main.73b1f5a3.js",
     "static/css/2.1b5404f8.chunk.css",
-    "static/js/2.190a5046.chunk.js",
-    "static/css/main.20c4603b.chunk.css",
-    "static/js/main.3fa19376.chunk.js"
+    "static/js/2.de6839d2.chunk.js",
+    "static/css/main.0050fbef.chunk.css",
+    "static/js/main.b3efdd17.chunk.js"
   ]
 }

@@ -54,7 +54,7 @@ class AddQuizSeries extends React.Component {
 
   getCategoriesFromDatabase() {
     axios
-      .get("http://34.227.47.234:5000/quiz/api/getCategories")
+      .get("https://drive-now.herokuapp.com/quiz/api/getCategories")
       .then((res) => {
         console.log("response : ",res);
         if (res.data.status === 200) {
@@ -103,7 +103,7 @@ class AddQuizSeries extends React.Component {
         isLoading: true
       });
       axios
-        .post("http://34.227.47.234:5000/quiz/api/getSeriesCount",{
+        .post("https://drive-now.herokuapp.com/quiz/api/getSeriesCount",{
           category: this.state.category,
         },
         {
@@ -215,7 +215,7 @@ onDropdownSelected(e) {
     }  else {
       const data = new FormData();
     if ( this.state.selectedFile ) {
-      var url = 'http://34.227.47.234:5000/quiz/api/uploadImage';
+      var url = 'https://drive-now.herokuapp.com/quiz/api/uploadImage';
       data.append('File', this.state.file );
       axios.post( url, data, {
       headers: {
@@ -249,7 +249,7 @@ onDropdownSelected(e) {
   addProduct() {
       axios
         .post(
-          "http://34.227.47.234:5000/quiz/api/addSeries",
+          "https://drive-now.herokuapp.com/quiz/api/addSeries",
           {
             category: this.state.category,
             number: this.state.seriesNumber,

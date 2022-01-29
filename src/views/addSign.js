@@ -56,7 +56,7 @@ class AddSign extends React.Component {
 
   getCategoriesFromDatabase() {
     axios
-      .get("http://34.227.47.234:5000/quiz/api/getSignCategories")
+      .get("https://drive-now.herokuapp.com/quiz/api/getSignCategories")
       .then((res) => {
         console.log("response : ",res);
         if (res.data.status === 200) {
@@ -199,7 +199,7 @@ class AddSign extends React.Component {
     } else {
       const data = new FormData();
     if ( this.state.selectedFile ) {
-      var url = 'http://34.227.47.234:5000/quiz/api/uploadImage';
+      var url = 'https://drive-now.herokuapp.com/quiz/api/uploadImage';
       data.append('File', this.state.file );
       axios.post( url, data, {
       headers: {
@@ -237,7 +237,7 @@ class AddSign extends React.Component {
   addProduct() {
       axios
         .post(
-          "http://34.227.47.234:5000/quiz/api/addSign",
+          "https://drive-now.herokuapp.com/quiz/api/addSign",
           {
             SignName: this.state.SignName,
             SignType: this.state.SignType,

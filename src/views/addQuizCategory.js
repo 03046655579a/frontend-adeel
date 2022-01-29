@@ -104,7 +104,7 @@ class AddQuizCategory extends React.Component {
   addProduct() {
       axios
         .post(
-          "http://34.227.47.234:5000/quiz/api/addQuizCategory",
+          "https://drive-now.herokuapp.com/quiz/api/addQuizCategory",
           {
             categoryTitle: this.state.catTitle,
             description: this.state.Description,

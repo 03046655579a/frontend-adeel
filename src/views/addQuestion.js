@@ -147,7 +147,7 @@ class AddQuestion extends React.Component {
 
   getCategoriesFromDatabase() {
     axios
-      .get("http://34.227.47.234:5000/quiz/api/getCourseCategories")
+      .get("https://drive-now.herokuapp.com/quiz/api/getCourseCategories")
       .then((res) => {
         console.log("response : ", res);
         if (res.data.status === 200) {
@@ -194,7 +194,7 @@ class AddQuestion extends React.Component {
       });
       axios
         .post(
-          "http://34.227.47.234:5000/quiz/api/getSeriesCount",
+          "https://drive-now.herokuapp.com/quiz/api/getSeriesCount",
           {
             category: this.state.category
           },
@@ -785,7 +785,7 @@ class AddQuestion extends React.Component {
         if (result === "http") {
           this.addProduct();
         } else {
-          var url = "http://34.227.47.234:5000/quiz/api/uploadImage";
+          var url = "https://drive-now.herokuapp.com/quiz/api/uploadImage";
           data.append("File", this.state.file);
           axios
             .post(url, data, {
@@ -870,8 +870,8 @@ class AddQuestion extends React.Component {
     axios
       .post(
         this.state.isUpdate
-          ? "http://34.227.47.234:5000/quiz/api/updateSpecificQuestion"
-          : "http://34.227.47.234:5000/quiz/api/addQuestion",
+          ? "https://drive-now.herokuapp.com/quiz/api/updateSpecificQuestion"
+          : "https://drive-now.herokuapp.com/quiz/api/addQuestion",
         this.state.isUpdate
           ? {
               id: this.state.recordId,
@@ -1432,7 +1432,19 @@ class AddQuestion extends React.Component {
                               <div className="row justify-content-between">
                                 {!this.state.isUpdate && (
                                   <div className="col-sm-4">
-                                    <Button
+                                    {
+                                      this.state.isQuestion2 ?
+                                      <Button
+                                      onClick={() =>
+                                        this.setState({
+                                          isQuestion2: false
+                                        })
+                                      }
+                                    >
+                                      Single Question
+                                    </Button>
+                                      :
+                                      <Button
                                       onClick={() =>
                                         this.setState({
                                           isQuestion2: true
@@ -1441,6 +1453,8 @@ class AddQuestion extends React.Component {
                                     >
                                       Multiple Questions
                                     </Button>
+                                    }
+                                    
                                   </div>
                                 )}
                                

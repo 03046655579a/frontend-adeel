@@ -105,7 +105,7 @@ class signCategoryList extends React.Component {
     }  else {
       const data = new FormData();
     if ( this.state.selectedFile != null) {
-      var url = 'http://34.227.47.234:5000/quiz/api/uploadImage';
+      var url = 'https://drive-now.herokuapp.com/quiz/api/uploadImage';
       data.append('File', this.state.file );
       axios.post( url, data, {
       headers: {
@@ -138,7 +138,7 @@ class signCategoryList extends React.Component {
   addProduct() {
       axios
         .post(
-          "http://34.227.47.234:5000/quiz/api/updateSpecificSignCategory",
+          "https://drive-now.herokuapp.com/quiz/api/updateSpecificSignCategory",
           {
             id: this.state.recordId,  
             title: this.state.description,
@@ -190,7 +190,7 @@ class signCategoryList extends React.Component {
 
   getOrdersFromDatabase() {
     axios
-      .get("http://34.227.47.234:5000/quiz/api/getSignCategories")
+      .get("https://drive-now.herokuapp.com/quiz/api/getSignCategories")
       .then((res) => {
         console.log("response : ",res);
         if (res.data.status === 200) {
@@ -274,7 +274,7 @@ class signCategoryList extends React.Component {
   delete = (index) => {
     axios
       .post(
-        "http://34.227.47.234:5000/quiz/api/deleteSpecificSignCategory",
+        "https://drive-now.herokuapp.com/quiz/api/deleteSpecificSignCategory",
         {
           id: this.state.ordersData.data.feed[index].id,
         },

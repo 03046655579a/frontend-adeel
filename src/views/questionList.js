@@ -112,7 +112,7 @@ class QuestionsList extends React.Component {
 
   getCategoriesFromDatabase() {
     axios
-      .get("http://34.227.47.234:5000/quiz/api/getCategories")
+      .get("https://drive-now.herokuapp.com/quiz/api/getCategories")
       .then((res) => {
         console.log("response : ", res);
         if (res.data.status === 200) {
@@ -159,7 +159,7 @@ class QuestionsList extends React.Component {
       });
       axios
         .post(
-          "http://34.227.47.234:5000/quiz/api/getSeriesCount",
+          "https://drive-now.herokuapp.com/quiz/api/getSeriesCount",
           {
             category: this.state.category
           },
@@ -559,7 +559,7 @@ class QuestionsList extends React.Component {
     } else {
       const data = new FormData();
       if (this.state.selectedFile != null) {
-        var url = "http://34.227.47.234:5000/quiz/api/uploadImage";
+        var url = "https://drive-now.herokuapp.com/quiz/api/uploadImage";
         data.append("File", this.state.file);
         axios
           .post(url, data, {
@@ -589,7 +589,7 @@ class QuestionsList extends React.Component {
   addProduct() {
     axios
       .post(
-        "http://34.227.47.234:5000/quiz/api/updateSpecificQuestion",
+        "https://drive-now.herokuapp.com/quiz/api/updateSpecificQuestion",
         {
           id: this.state.recordId,
           category: this.state.category,
@@ -665,7 +665,7 @@ class QuestionsList extends React.Component {
   getOrdersFromDatabase() {
     debugger;
     axios
-      .get("http://34.227.47.234:5000/quiz/api/getAllQuestions")
+      .get("https://drive-now.herokuapp.com/quiz/api/getAllQuestions")
       .then((res) => {
         console.log("response : ", res.data);
         if (res.data.code === 200) {
@@ -821,7 +821,7 @@ class QuestionsList extends React.Component {
   delete = (index) => {
     axios
       .post(
-        "http://34.227.47.234:5000/quiz/api/deleteSpecificQuestion",
+        "https://drive-now.herokuapp.com/quiz/api/deleteSpecificQuestion",
         {
           id: this.state.ordersData.data.data[index].id
         },

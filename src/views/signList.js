@@ -159,7 +159,7 @@ class signList extends React.Component {
     } else {
       const data = new FormData();
     if ( this.state.selectedFile != null ) {
-      var url = 'http://34.227.47.234:5000/quiz/api/uploadImage';
+      var url = 'https://drive-now.herokuapp.com/quiz/api/uploadImage';
       data.append('File', this.state.file );
       axios.post( url, data, {
       headers: {
@@ -192,7 +192,7 @@ class signList extends React.Component {
   addProduct() {
       axios
         .post(
-          "http://34.227.47.234:5000/quiz/api/updateSpecificSign",
+          "https://drive-now.herokuapp.com/quiz/api/updateSpecificSign",
           {
             id: this.state.recordId,
             SignName: this.state.SignName,
@@ -249,7 +249,7 @@ class signList extends React.Component {
 
   getOrdersFromDatabase() {
     axios
-      .get("http://34.227.47.234:5000/quiz/api/getAllSigns")
+      .get("https://drive-now.herokuapp.com/quiz/api/getAllSigns")
       .then((res) => {
         console.log("response : ",res);
         if (res.data.status === 200) {
@@ -338,7 +338,7 @@ class signList extends React.Component {
   delete = (index) => {
     axios
       .post(
-        "http://34.227.47.234:5000/quiz/api/deleteSign",
+        "https://drive-now.herokuapp.com/quiz/api/deleteSign",
         {
           id: this.state.ordersData.data.feed[index].id,
         },
