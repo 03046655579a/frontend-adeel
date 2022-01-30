@@ -147,7 +147,7 @@ class AddQuestion extends React.Component {
 
   getCategoriesFromDatabase() {
     axios
-      .get("https://drive-now.herokuapp.com/quiz/api/getCourseCategories")
+      .get("https://drive-now.herokuapp.com/quiz/api/getCategories")
       .then((res) => {
         console.log("response : ", res);
         if (res.data.status === 200) {
@@ -886,7 +886,7 @@ class AddQuestion extends React.Component {
               seriesNumber: this.state.selectedSeriesNumber,
               url: this.state.uploadedImageUrl,
               language: this.state.language,
-              questions: [q1, this.state.isQuestion2 && q2]
+              questions:  this.state.isQuestion2 ? [q1, q2] : [q1]
             },
         {
           headers: {
