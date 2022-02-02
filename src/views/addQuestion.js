@@ -10,7 +10,8 @@ import {
   Form,
   Input,
   Row,
-  Col
+  Col,
+  Container
 } from "reactstrap";
 import { reactLocalStorage } from "reactjs-localstorage";
 // core components
@@ -886,7 +887,7 @@ class AddQuestion extends React.Component {
               seriesNumber: this.state.selectedSeriesNumber,
               url: this.state.uploadedImageUrl,
               language: this.state.language,
-              questions:  this.state.isQuestion2 ? [q1, q2] : [q1]
+              questions: this.state.isQuestion2 ? [q1, q2] : [q1]
             },
         {
           headers: {
@@ -1047,13 +1048,10 @@ class AddQuestion extends React.Component {
                               type="select"
                               style={{ height: 50 }}
                               onChange={this.onDropdownSelected}
+                              value={this.state.category}
                             >
                               {this.state.ordersData.map((e, key) => {
-                                return (
-                                  <option key={key} value={e.title}>
-                                    {e.title}
-                                  </option>
-                                );
+                                return <option key={key}>{e.title}</option>;
                               })}
                             </Input>
                           </FormGroup>
@@ -1408,13 +1406,16 @@ class AddQuestion extends React.Component {
                         </Row>
                       </>
                     )}
-
-                    <Row style={{ marginTop: "10%" }}>
-                      <Col className="pr-1" md="3"></Col>
-                      <Col className="px-1" md="4"></Col>
-                      <Col className="pl-1" md="4">
+                    <Container>
+                      <Row
+                        className="justify-content-lg-right"
+                        style={{ marginTop: "10%", float: "right" }}
+                      >
+                        {/* <Col className="pr-1" md="3"></Col>
+                      <Col className="px-1" md="4"></Col> */}
+                        {/* <Col className="pl-1" md="12"> */}
                         {this.state.isResponseReceived ? (
-                          <Col className="pr-1" md="4">
+                          <Col className="pr-1" lg="6">
                             <FormGroup>
                               <Loader
                                 style={{ textAlign: "center" }}
@@ -1426,15 +1427,15 @@ class AddQuestion extends React.Component {
                             </FormGroup>
                           </Col>
                         ) : (
-                          <FormGroup>
-                            <label></label>
-                            <div className="container">
-                              <div className="row justify-content-between">
-                                {!this.state.isUpdate && (
-                                  <div className="col-sm-4">
-                                    {
-                                      this.state.isQuestion2 ?
-                                      <Button
+                          <>
+                              {/* <label></label> */}
+                              {/* <div className="container"> */}
+                              {/* <div className="row"> */}
+                              {!this.state.isUpdate && (
+                            <Col className="pl-1" lg="6">
+                                <div>
+                                  {this.state.isQuestion2 ? (
+                                    <Button
                                       onClick={() =>
                                         this.setState({
                                           isQuestion2: false
@@ -1443,8 +1444,8 @@ class AddQuestion extends React.Component {
                                     >
                                       Single Question
                                     </Button>
-                                      :
-                                      <Button
+                                  ) : (
+                                    <Button
                                       onClick={() =>
                                         this.setState({
                                           isQuestion2: true
@@ -1453,41 +1454,42 @@ class AddQuestion extends React.Component {
                                     >
                                       Multiple Questions
                                     </Button>
-                                    }
-                                    
-                                  </div>
-                                )}
-                               
-
-                                <div className="col-sm-4">
+                                  )}
+                                </div>
+                            </Col>
+                              )}
+                              {this.state.isUpdate && (
+                                  <Col lg="6">
+                                <div>
                                   <Button
-                                    onClick={this.singleFileUploadHandler}
+                                    onClick={() =>
+                                      this.state.updateQuestionSetState(false)
+                                    }
                                   >
-                                    {`${
-                                      this.state.isUpdate
-                                        ? "Update Question"
-                                        : "Add Question"
-                                    }`}
-
+                                    Cancel
                                   </Button>
                                 </div>
-                                {this.state.isUpdate && (
-                                  <div className="col-sm-3">
-                                    <Button
-                                      onClick={() =>
-                                        this.state.updateQuestionSetState(false)
-                                      }
-                                    >
-                                      Cancel
-                                    </Button>
-                                  </div>
-                                )}
+                            </Col>
+                              )}
+                            <Col className="pr-5">
+                              <div>
+                                <Button onClick={this.singleFileUploadHandler}>
+                                  {`${
+                                    this.state.isUpdate
+                                      ? "Update Question"
+                                      : "Add Question"
+                                  }`}
+                                </Button>
                               </div>
-                            </div>
-                          </FormGroup>
+                            </Col>
+                              
+                              {/* </div> */}
+                              {/* </div> */}
+                          </>
                         )}
-                      </Col>
-                    </Row>
+                        {/* </Col> */}
+                      </Row>
+                    </Container>
                     <Row>
                       <Col md="12">
                         <FormGroup>
